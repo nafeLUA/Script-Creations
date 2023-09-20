@@ -2,7 +2,7 @@
 -- Thanks for supporting nafe Scripts!							-- 
 -- Support can be found at: https://discord.gg/k6xPqGfbfJ			--
 -- More paid scripts at: https://nafe.tebex.io/ 				-- not in use anymore, working on new tebex
--- More FREE scripts at: https://github.com/nafedev/ 				--
+-- More FREE scripts at: https://github.com/nxfedeveloper/ 				--
 ----------------------------------------------------------------------
 -- Model info: https://docs.fivem.net/docs/game-references/ped-models/
 -- Blip info: https://docs.fivem.net/docs/game-references/blips/
