@@ -1,8 +1,8 @@
-fx_version 'adamant'
+fx_version 'cerulean'
+games { 'gta5' }
+author 'mumless'
 
-game 'gta5'
-author '! n#0069'
+client_scripts {
+    "client.lua",
+}
 
-server_scripts {'server.lua'}
-
-client_scripts {'client.lua'}
