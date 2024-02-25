@@ -1,5 +1,6 @@
 QBcore = nil
 local CD = Config.Cooldown
+-- local qscore = nil 
 
 
 if Config.UseESX then
@@ -9,6 +10,7 @@ if Config.UseESX then
     ESX.RegisterServerCallback('nafe-YachtHeist:PoliceAvailable:ESX',function(source,cb)
         local xPlayers = ESX.GetPlayers()
         local cops = 0
+        -- local qPlayers = QBcore.getPlayers() < un comment if using qbcore 
 
         for i=1, #xPlayers, 1 do
             local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
