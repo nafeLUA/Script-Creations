@@ -37,6 +37,7 @@ elseif Config.UseQBCore then
         local players = QBCore.Functions.GetQBPlayers()
         for k, v in pairs(players) do
             for i = 1, #Config.LEOJobName do
+            -- for i = 1, #Config.MPDJobName do < uncomment for uk job
                 if v.PlayerData.job.name == Config.LEOJobName[i] then
                     cops = cops + 1
                 end
