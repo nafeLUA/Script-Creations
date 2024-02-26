@@ -31,6 +31,9 @@ if Config.UseESX then
 
 elseif Config.UseQBCore then
     QBCore = exports['qb-core']:GetCoreObject()
+    -- if Config.ESX = true then 
+            -- ESX = exports['PLACESQLHERE']:GetCoreObject()
+
 
     QBCore.Functions.CreateCallback('nafe-YachtHeist:PoliceAvailable:QBCore', function(source, cb)
         local cops = 0
