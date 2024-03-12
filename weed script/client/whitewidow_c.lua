@@ -213,10 +213,11 @@ exports['qb-target']:AddBoxZone("whitewidowshop", Config.WhiteWidowShop, 1.0, 10
 -- Open white widow store customise items in config.lua
 RegisterNetEvent('inventory:client:OpenWhiteWidowShop')
 AddEventHandler('inventory:client:OpenWhiteWidowShop', function()
-    local ShopItems = {}
-    ShopItems.label = "White Widow"
-    ShopItems.items = Config.WhiteWidowItems
-    ShopItems.slots = #Config.WhiteWidowItems
+    local ShopItems = {
+        label = "White Widow",
+        items = Config.WhiteWidowShopItems,
+        slots = #Config.WhiteWidowShopItems
+    }
     TriggerServerEvent("inventory:server:OpenInventory", "shop", "White Widow", ShopItems)
 end)
 -- Targeting for white widow trimming location
@@ -381,10 +382,11 @@ exports['qb-target']:AddBoxZone("whitewidowsnacks", Config.WhiteWidowSnacks, 1.0
 -- Open vanilla unicorn store customise items in config.lua
 RegisterNetEvent('inventory:client:OpenWhiteWidowSnackTable')
 AddEventHandler('inventory:client:OpenWhiteWidowSnackTable', function()
-    local ShopItems = {}
-    ShopItems.label = "White Widow"
-    ShopItems.items = Config.WhiteWidowSnackTable
-    ShopItems.slots = #Config.WhiteWidowSnackTable
+    local ShopItems = {
+        label = "White Widow",
+        items = Config.WhiteWidowSnackTable,
+        slots = #Config.WhiteWidowSnackTable
+    }
     TriggerServerEvent("inventory:server:OpenInventory", "shop", "White Widow Snacks", ShopItems)
 end)
 -- Targeting for white widow sales tray
@@ -692,13 +694,7 @@ RegisterNetEvent('nafe-whitewidowjob:client:UseSkunkJoint', function()
 				AddArmourToPed(PlayerPedId(), math.random(1,5))
 				SetPedMotionBlur(ped, true)
 				SetPedMovementClipset(ped, "move_m@hipster@a", true)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.35)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.25)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.15)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.05)
+				camShake()
 				Citizen.Wait(5*1500)
 				ClearTimecycleModifier()
 		else		
@@ -724,13 +720,7 @@ RegisterNetEvent('nafe-whitewidowjob:client:UseOGKushJoint', function()
 				AddArmourToPed(PlayerPedId(), math.random(3,8))
 				SetPedMotionBlur(ped, true)
 				SetPedMovementClipset(ped, "move_m@hipster@a", true)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.35)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.25)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.15)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.05)
+                camShake()
 				Citizen.Wait(5*1500)
 				ClearTimecycleModifier()
 		else		
@@ -756,13 +746,7 @@ RegisterNetEvent('nafe-whitewidowjob:client:UseWhiteWidowJoint', function()
 				AddArmourToPed(PlayerPedId(), math.random(5,11))
 				SetPedMotionBlur(ped, true)
 				SetPedMovementClipset(ped, "move_m@hipster@a", true)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.35)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.25)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.15)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.05)
+				camShake()
 				Citizen.Wait(5*1500)
 				ClearTimecycleModifier()
 		else		
@@ -788,13 +772,7 @@ RegisterNetEvent('nafe-whitewidowjob:client:UseAK47Joint', function()
 				AddArmourToPed(PlayerPedId(), math.random(9,13))
 				SetPedMotionBlur(ped, true)
 				SetPedMovementClipset(ped, "move_m@hipster@a", true)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.35)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.25)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.15)
-				Wait(1500)
-				ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.05)
+				camShake()
 				Citizen.Wait(5*1500)
 				ClearTimecycleModifier()
 		else		
@@ -816,9 +794,12 @@ function playAnim(animDict, animName, duration)
     TaskPlayAnim(PlayerPedId(), animDict, animName, 1.0, -1.0, duration, 49, 1, false, false, false)
     RemoveAnimDict(animDict)
 end
--- Floating help text
-helpText = function(msg)
-    BeginTextCommandDisplayHelp('STRING')
-    AddTextComponentSubstringPlayerName(msg)
-    EndTextCommandDisplayHelp(0, false, true, -1)
+
+function camShake()
+    local camshake = 0.35
+    while camshake > 0 do
+        ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', camshake)
+        Wait(1500)
+        camshake = camshake - 0.1
+    end
 end
