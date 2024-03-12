@@ -456,3 +456,10 @@ QBCore.Functions.CreateUseableItem("weed_ak47_cbd_joint", function(source, item)
         TriggerClientEvent("nafe-whitewidowjob:client:UseAK47Joint", source)
     end
 end)
+QBCore.Functions.CreateUseableItem("weed_ak47_thc_joint", function(source, item)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.Functions.GetItemByName(item.name) ~= nil then 
+        TriggerClientEvent("nafe-whitewidowjob:client:UseWhiteWidowThc", source)
+    end
+end)
