@@ -3,28 +3,24 @@ local tips = {
     "Make sure to join the support discord over @ discord.gg/linkhere",
     "Please follow all rules, failure in doing so will result in a warning / ban",
 } -- change tips to whatever you like
-
-local interval = 19
-
 local tipIndex = 1
 
 function sendTip()
-    local tip = tips[tipIndex]
-    TriggerClientEvent('chat:addMessage', -1, { 
-        template = '<div style=color: #ffffff;">[Server Tip]</div> <div style="color: #b3b3b3;">{0}</div>',
-        args = { tip }
-    })
-
+    TriggerEvent('chat:addMessage', 
+        {
+            template = '<div style=color: #ffffff;">[Server Tip]</div> <div style="color: #b3b3b3;">{0}</div>',
+            args = { tips[tipIndex] }
+        }
+    )
     tipIndex = tipIndex + 1 
-
     if tipIndex > #tips then
         tipIndex = 1
     end
 end
 
 Citizen.CreateThread(function()
-    while true Do
-    Citizen.Wait(interval *60*100)
-    sendTip()
-end
+    while true do
+        Citizen.Wait(60*1000)
+        sendTip()
+    end
 end)
