@@ -141,8 +141,9 @@ Config.GuardType = { 									-- Guard models **Note the use of different gangs 
 
 Config.GuardWeapon = { 									-- Guard weapons
     'weapon_carbinerifle',
+	'weapon_pistol',
 }
-Config.GuardArmour = 200 								-- Guard Armour
+Config.GuardArmour = 100								-- Guard Armour
 
 Config.LangType = {
 	['error'] = 'error',
