@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author '! nafe#0069'
+author 'nafe'
 description 'Yacht Heist'
 version '1.1.2'
 

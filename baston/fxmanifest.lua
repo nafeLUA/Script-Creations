@@ -1,5 +1,5 @@
 fx_version 'adamant'
 game 'gta5'
-author '! n#0069'
+author 'nafe'
 
 client_script "client.lua"
